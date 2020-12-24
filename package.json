@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev src/server.ts --transpileOnly --ignore node_modules"
+    "dev:server": "ts-node-dev --inspect --ignore node_modules src/server.ts --transpileOnly"
   },
   "dependencies": {
     "express": "^4.17.1"
