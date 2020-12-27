@@ -11,8 +11,6 @@ const appointmentsRouter = Router();
 appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.get('/', async (request, response) => {
-  console.log(request.user);
-
   const appointmentsReposiory = getCustomRepository(AppointmentsRepository);
   const appointments = await appointmentsReposiory.find();
 
@@ -33,7 +31,11 @@ appointmentsRouter.post('/', async (request, response) => {
 
     return response.json(appointment);
   } catch (err) {
-    return response.status(400).json({ error: err.message });
+    console.log(
+      '🚀 ~ file: appointments.routes.ts ~ line 34 ~ appointmentsRouter.post ~ err',
+      err,
+    );
+    return response.status(err.statusCode).json({ error: err.message });
   }
 });
 
